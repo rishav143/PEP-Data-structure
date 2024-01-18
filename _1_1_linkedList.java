@@ -1,26 +1,33 @@
 class Node {
     int data;
-    Node next;
-    Node head = null;
+    Node next = null;
+    
+    Node(int data) {
+        this.data = data;
+        next = null;
+    }
+}
 
-    public void insertatfront(int data) {
-        Node newNode = new Node();
-        
+public class _1_1_linkedList {
+    public static Node head = null;
+    
+    public static void insertAtFront(int data) {
+        Node newNode = new Node(data);
 
         if(head == null) {
-            newNode = head;
+            head = newNode;
         } else {
             newNode.next = head;
             head = newNode;
         }
     }
 
-    public void insertLast(int data) {
-        Node newNode = new Node();
+    public static void insertAtLast(int data) {
+        Node newNode = new Node(data);
         Node last = head;
 
         if(last == null){
-            newNode = head;
+            head = newNode;
         } else {
             while(last.next != null) {
                 last = last.next;
@@ -30,29 +37,25 @@ class Node {
         }
     }
 
-    public void print() {
+    public static void print() {
         Node curr = head;
 
         if(head == null) {
             return;
         } else {
-            while(curr.next != null) {
+            while(curr != null) {
                 System.out.print(curr.data + " ");
 
                 curr = curr.next;
             }
         }
     }
-}
-
-public class _1_1_linkedList {
     
     public static void main(String[] args) {
-        Node ll = new Node();
         
-        ll.insertAtFront(2);
-        ll.insertAtFront(3);
+        insertAtFront(2);
+        insertAtFront(3);
 
-        ll.print();
+        print();
     }
 }

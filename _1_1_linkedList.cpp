@@ -15,7 +15,7 @@ struct Node /*single linked list*/
 //     struct Node* next;
 // };
 
-void insertAtBeg(int data, struct Node* head) {
+void insertAtBeg(int data, struct Node*& head) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = data;
 
@@ -27,10 +27,10 @@ void insertAtBeg(int data, struct Node* head) {
     }
 }
 
-void insertAtlast(int data, struct Node* head) {
+void insertAtlast(int data, struct Node*& head) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = data;
-
+    
     struct Node* temp = head;
     if(head == NULL) {
         head = newNode;
@@ -43,7 +43,7 @@ void insertAtlast(int data, struct Node* head) {
     temp->next = newNode;
 }
 
-void insertAtAny(int data, struct Node* head, int pos) {
+void insertAtAny(int data, struct Node*& head, int pos) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = data;
 
@@ -56,14 +56,14 @@ void insertAtAny(int data, struct Node* head, int pos) {
     temp->next = newNode;
 }
 
-void delinfront(struct Node* head) {
+void delinfront(struct Node*& head) {
     struct Node* temp = head;
     
     head = temp->next;
     free(temp);
 }
 
-void delinlast(struct Node* head) {
+void delinlast(struct Node*& head) {
     struct Node* temp = head;
 
     while(temp->next->next != NULL) {
@@ -73,7 +73,7 @@ void delinlast(struct Node* head) {
     temp->next = NULL;
 }
 
-void delatany(struct Node* head, int pos) {
+void delatany(struct Node*& head, int pos) {
     struct Node* temp = head;
 
     for(int i = 1; i < pos; i++) {
@@ -85,7 +85,7 @@ void delatany(struct Node* head, int pos) {
     free(curr);
 }
 
-void search(struct Node* head, int key) {
+void search(struct Node*& head, int key) {
     struct Node* temp = head;
 
     while(temp != NULL) {
@@ -98,7 +98,7 @@ void search(struct Node* head, int key) {
     }
 }
 
-void sortlist(struct Node* head) {
+void sortlist(struct Node*& head) {
     struct Node* curr = head;
 
     while(curr != NULL) {
@@ -120,7 +120,7 @@ void sortlist(struct Node* head) {
 }
 
 //question one
-void sumoflinkedlist(struct Node* head) {
+void sumoflinkedlist(struct Node*& head) {
     struct Node* temp = head;
     int sum = 0;
 
@@ -133,7 +133,11 @@ void sumoflinkedlist(struct Node* head) {
 }
 
 //question two
-struct Node* mergelinkedlist(struct Node* head, struct Node* head1) {
+struct Node* mergelinkedlist(struct Node*& head, struct Node*& head1) {
+    if(head == NULL) {
+        return head1;
+    }
+    
     struct Node* first = head;
     struct Node* second = head1;
 
@@ -146,27 +150,29 @@ struct Node* mergelinkedlist(struct Node* head, struct Node* head1) {
     return head;
 }
 
-void insertalternate(struct Node* newll, struct Node* head) {
+void insertalternate(struct Node*& newll, struct Node*& head) {
     struct Node* newlist = newll;
     struct Node* curr = head;
 
-    while(curr->next != NULL || curr->next->next != NULL) {
+    while(curr != NULL && curr->next != NULL) {
         insertAtlast(curr->data, newlist);
         curr = curr->next->next;
     }
 }
 
-void accendingdecending(struct Node* head) {
+// void accendingdecending(struct Node* head) {
     
-}
+// }
 
-void printList(struct Node* head) {
+void printList(struct Node*& head) {
     struct Node* temp = head;
 
     while(temp != NULL) {
         cout << temp->data << " ";
         temp = temp->next;
     }
+    
+    cout<<endl;
 }
 
 int main() {
@@ -181,11 +187,11 @@ int main() {
 
     printList(head);
 
-// -----------------------------------------------
+// // -----------------------------------------------
 
     //Q1 sum of linked list
     sumoflinkedlist(head);
-
+    cout<<endl;
     //Q2 merge two linked list and return head
     struct Node* head1 = NULL;
     
@@ -193,15 +199,13 @@ int main() {
     insertAtBeg(7, head1);
     insertAtBeg(8, head1);
 
-    struct Node* newhead = (struct Node*)mergelinkedlist(head, head1);
+    struct Node* newhead = mergelinkedlist(head, head1);
 
     printList(newhead);
-    
-    //Q3 create new linked list with alternate position
 
+    //Q3 create new linked list with alternate position
     struct Node* newll = NULL;
     insertalternate(newll, head);
-
 // ---------------------------------------------------
 
 }
