@@ -64,56 +64,55 @@ class LinkedList {
             }
         }
     }
-    
+
+    //question 3 - delete in the middle
+    public void deleteInMiddle() {
+        int mid = size/2;
+        
+        Node stackNode = head;
+        for(int i = 1; i <= size; i++) {
+            if(i != mid) {
+                System.out.print(stackNode.data + " ");
+            }
+            stackNode = stackNode.next;
+        }
+    }
+}
+
+public class _1_5_implementingStackUsingLL {
     //Question 1 - reverse String
-    public String reverseString(String str) {
+    public static String reverseString(String str, LinkedList stk2) {
         for(int i = 0; i < str.length(); i++) {
-            push(str.charAt(i));
+            stk2.push(str.charAt(i));
         }
         
         String newString = "";
         for(int i = 0; i < str.length(); i++) {
-            newString = newString + (char)peek();
-            pop();
+            newString = newString + (char)stk2.peek();
+            stk2.pop();
         }
         
         return newString;
     }
     
     //Question 2 - balance expression
-    public boolean balacingExpression(String exp) {
+    public static boolean balacingExpression(String exp, LinkedList stk3) {
         for(int i = 0; i < exp.length(); i++) {
             char currChar = exp.charAt(i);
-            if((peek() == '{' && currChar == '}') || (peek() == '(' && currChar == ')') || (peek() == '[' && currChar == ']')) {
-                pop();
+            if((stk3.peek() == '{' && currChar == '}') || (stk3.peek() == '(' && currChar == ')') || (stk3.peek() == '[' && currChar == ']')) {
+                stk3.pop();
             } else {
-                push(currChar);
+                stk3.push(currChar);
             }
         }
         
-        if(peek() == -1) {
+        if(stk3.peek() == -1) {
             return true;
         }
         return false;
     }
-    
-    //Quesion 4 - delete a middle element of stack
-    public void deleteInMiddle() {
-        int mid = size/2;
-        int arr[] = new int[mid];
-        
-        for(int i = 0; i < mid-1; i++) {
-            arr[i] = peek();
-            pop();
-        }
-        pop();
-        for(int i = arr.length; i>=0; i--) {
-            
-        }
-    }
-}
 
-public class _1_5_implementingStackUsingLL {
+    //Quesion 4 - infix to postfix expression
     
     public static void main(String[] args) {
         LinkedList stack = new LinkedList();
@@ -139,19 +138,28 @@ public class _1_5_implementingStackUsingLL {
         // Question 1 - reverse a string using stack
         LinkedList stk2 = new LinkedList(); // new stack 2
         String str = "hello world";
-        System.out.println(stk2.reverseString(str));
+        System.out.println(reverseString(str, stk2));
         
         // Question 2 - balacing the expression
         LinkedList stk3 = new LinkedList(); // stack 3
         String str2 = "{({})}";
-        boolean res = stk3.balacingExpression(str2);
+        boolean res = balacingExpression(str2, stk3);
         if(res == true) {
             System.out.println("Expression is valid !");
         } else {
             System.out.println("wrong !");
         }
         
-        //Quesion 3 - removing the mid element from stack
+        //Quesion 3 - Deleted middle of the linked list using stack
+        LinkedList ll = new LinkedList();
+        ll.push(0);
+        ll.push(1);
+        ll.push(2);
+        ll.push(3);
+
+        ll.deleteInMiddle();
         
+        //Question 4 - infix to prefix
+
     }
 }
