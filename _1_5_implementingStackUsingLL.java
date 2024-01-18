@@ -1,19 +1,19 @@
-import java.lang.String;
-class Node {
-    int data;
-    Node next = null;
-    
-    Node(int data) {
-        this.data = data;
-        next = null;
-    }
-}
+class LinkedList {
+    Node head;
+    int size;
 
-public class Main {
-    public static Node head = null;
-    public static int size = 0;
+    class Node {
+        int data;
+        Node next = null;
+        
+        Node(int data) {
+            this.data = data;
+            next = null;
+        }
     
-    public static void insertAtFront(int data) {
+    }
+    
+    public void insertAtFront(int data) {
         Node newNode = new Node(data);
 
         if(head == null) {
@@ -24,7 +24,7 @@ public class Main {
         }
     }
 
-    public static void deleteAtFront() {
+    public void deleteAtFront() {
         if(head == null) {
             return;
         }else {
@@ -33,17 +33,17 @@ public class Main {
     }
     
     //implementing stack using queue
-    public static void push(int data) {
+    public void push(int data) {
         insertAtFront(data);
         size++;
     }
     
-    public static void pop() {
+    public void pop() {
         deleteAtFront();
         size--;
     }
     
-    public static int peek() {
+    public int peek() {
         if(head == null) {
             return -1;
         } else {
@@ -51,7 +51,7 @@ public class Main {
         }
     }
     
-    public static void print() {
+    public void print() {
         Node curr = head;
 
         if(head == null) {
@@ -66,7 +66,7 @@ public class Main {
     }
     
     //Question 1 - reverse String
-    public static String reverseString(String str) {
+    public String reverseString(String str) {
         for(int i = 0; i < str.length(); i++) {
             push(str.charAt(i));
         }
@@ -81,7 +81,7 @@ public class Main {
     }
     
     //Question 2 - balance expression
-    public static boolean balacingExpression(String exp) {
+    public boolean balacingExpression(String exp) {
         for(int i = 0; i < exp.length(); i++) {
             char currChar = exp.charAt(i);
             if((peek() == '{' && currChar == '}') || (peek() == '(' && currChar == ')') || (peek() == '[' && currChar == ']')) {
@@ -98,9 +98,9 @@ public class Main {
     }
     
     //Quesion 4 - delete a middle element of stack
-    public static void deleteInMiddle() {
+    public void deleteInMiddle() {
         int mid = size/2;
-        int arr[] = new arr[mid];
+        int arr[] = new int[mid];
         
         for(int i = 0; i < mid-1; i++) {
             arr[i] = peek();
@@ -111,37 +111,40 @@ public class Main {
             
         }
     }
+}
+
+public class _1_5_implementingStackUsingLL {
     
     public static void main(String[] args) {
-        
+        LinkedList stack = new LinkedList();
         //stack using linked list
-        push(2);
-        push(3);
-        push(4);
-        push(5);
-        print();
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        stack.push(5);
+        stack.print();
         System.out.println();
         
         //peek
-        System.out.println(peek());
-        print();
+        System.out.println(stack.peek());
+        stack.print();
         System.out.println();
         
         //remove top element
-        pop();
-        print(); 
+        stack.pop();
+        stack.print(); 
         System.out.println();
-        System.out.println(size); //finding size
+        System.out.println(stack.size); //finding size
         
         // Question 1 - reverse a string using stack
-        head = null;
+        LinkedList stk2 = new LinkedList(); // new stack 2
         String str = "hello world";
-        System.out.println(reverseString(str));
+        System.out.println(stk2.reverseString(str));
         
         // Question 2 - balacing the expression
-        head = null; // make static head to again null to discontinue previous linked list
+        LinkedList stk3 = new LinkedList(); // stack 3
         String str2 = "{({})}";
-        boolean res = balacingExpression(str2);
+        boolean res = stk3.balacingExpression(str2);
         if(res == true) {
             System.out.println("Expression is valid !");
         } else {
