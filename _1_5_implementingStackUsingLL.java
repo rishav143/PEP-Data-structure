@@ -1,3 +1,4 @@
+import java.util.Stack;
 class LinkedList {
     Node head;
     int size;
@@ -113,7 +114,64 @@ public class _1_5_implementingStackUsingLL {
     }
 
     //Quesion 4 - infix to postfix expression
-    
+    // public static String reverse(String expre) {
+    //     char arr[] = expre.toCharArray();
+    //     int start = 0, end = arr.length - 1;
+
+    //     while(start < end) {
+    //         //swap element
+    //         char temp = arr[start];
+    //         arr[start] = arr[end];
+    //         arr[end] = temp;
+
+    //         start++;
+    //         end--;
+    //     }
+
+    //     return arr.toString();
+    // }
+
+    public static boolean isDigit(char currChar) {
+        if(currChar >= '0' && currChar <= '9') {
+            return true;
+        } 
+        return false;
+    }
+
+    public static int getPriority(char currChar) {
+        if(currChar == '+' || currChar == '-') {
+            return 1;
+        } else if(currChar == '*' || currChar == '/') {
+            return 2;
+        } else if(currChar == '^') {
+            return 3;
+        } else {
+            return 0;
+        }
+    }
+
+    public static void infixToPostfix(String expre) {
+        Stack<Character> charStack = new Stack<>();
+        // String newStr = reverse(expre);
+        for(int i = 0; i < expre.length(); i++) {
+            char currChar = expre.charAt(i);
+            if(isDigit(currChar)) {
+                System.out.print(currChar);
+            } else {
+                while(!charStack.isEmpty() && getPriority(currChar) <= getPriority(charStack.peek())) {
+                    System.out.print(charStack.peek());
+                    charStack.pop();
+                }
+
+                charStack.add(currChar);
+            }
+        }
+        while(!charStack.isEmpty()) {
+            System.out.print(charStack.peek());
+            charStack.pop();
+        }
+    }
+
     public static void main(String[] args) {
         LinkedList stack = new LinkedList();
         //stack using linked list
@@ -158,8 +216,10 @@ public class _1_5_implementingStackUsingLL {
         ll.push(3);
 
         ll.deleteInMiddle();
+        System.out.println();
         
         //Question 4 - infix to prefix
-
+        String expr = "5+6*2-3/2";
+        infixToPostfix(expr);
     }
 }
