@@ -172,6 +172,14 @@ public class _1_5_implementingStackUsingLL {
         }
     }
 
+    public static void stackUsingRecursion(LinkedList stk5, int n) {
+        if(n <= 0) {
+            return;
+        }
+        stk5.push(n);
+        stackUsingRecursion(stk5, n-1);
+    }
+
     public static void main(String[] args) {
         LinkedList stack = new LinkedList();
         //stack using linked list
@@ -221,5 +229,11 @@ public class _1_5_implementingStackUsingLL {
         //Question 4 - infix to prefix
         String expr = "5+6*2-3/2";
         infixToPostfix(expr);
+        System.out.println();
+
+        //Question 8 - impl of stack using recursion
+        LinkedList stk5 = new LinkedList();
+        stackUsingRecursion(stk5, 10);
+        stk5.print();
     }
 }
