@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.util.Stack;
 class LinkedList {
     Node head;
@@ -176,7 +177,9 @@ public class _1_5_implementingStackUsingLL {
         if(n <= 0) {
             return;
         }
-        stk5.push(n);
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        stk5.push(num);
         stackUsingRecursion(stk5, n-1);
     }
 
@@ -233,7 +236,9 @@ public class _1_5_implementingStackUsingLL {
 
         //Question 8 - impl of stack using recursion
         LinkedList stk5 = new LinkedList();
-        stackUsingRecursion(stk5, 10);
+        stackUsingRecursion(stk5, 5);
         stk5.print();
+
+        //Question 9 - 
     }
 }
