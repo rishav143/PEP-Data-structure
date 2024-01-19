@@ -129,7 +129,7 @@ public class _1_5_implementingStackUsingLL {
             end--;
         }
 
-        return arr.toString();
+        return String.valueOf(arr);
     }
 
     public static boolean isDigit(char currChar) {
@@ -153,13 +153,13 @@ public class _1_5_implementingStackUsingLL {
 
     public static void infixToPostfix(String expre) {
         Stack<Character> charStack = new Stack<>();
-        // String newStr = reverse(expre);
         for(int i = 0; i < expre.length(); i++) {
             char currChar = expre.charAt(i);
             if(isDigit(currChar)) {
                 System.out.print(currChar);
             } else {
-                while(!charStack.isEmpty() && getPriority(currChar) < getPriority(charStack.peek())) {
+                while(!charStack.isEmpty() && (getPriority(currChar) < getPriority(charStack.peek())
+                || getPriority(currChar) <= getPriority(currChar) && currChar == '^')) {
                     System.out.print(charStack.peek());
                     charStack.pop();
                 }
@@ -175,7 +175,31 @@ public class _1_5_implementingStackUsingLL {
 
     public static void infixToPrefix(String expre) {
         Stack<Character> charStack = new Stack<>();
-        System.out.print(reverse(expre));
+        String newString  = reverse(expre);
+        String res = "";
+        for(int i = 0; i < newString.length(); i++) {
+            char currChar = newString.charAt(i);
+            if(isDigit(currChar)) {
+                res += currChar;
+            } else {
+                while(!charStack.isEmpty() && (getPriority(currChar) < getPriority(charStack.peek())
+                || getPriority(currChar) <= getPriority(currChar) && currChar == '^')) {
+                    res += charStack.peek();
+                    charStack.pop();
+                }
+
+                charStack.add(currChar);
+            }
+        }
+        while(!charStack.isEmpty()) {
+            res += charStack.peek();
+            charStack.pop();
+        }
+        
+        String resReverse = reverse(res);
+        for(int i = 0; i < resReverse.length(); i++) {
+            System.out.print(resReverse.charAt(i));
+        }
     }
 
     public static void stackUsingRecursion(LinkedList stk5, int n) {
