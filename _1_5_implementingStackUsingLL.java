@@ -114,23 +114,23 @@ public class _1_5_implementingStackUsingLL {
         return false;
     }
 
-    //Quesion 4 - infix to postfix expression
-    // public static String reverse(String expre) {
-    //     char arr[] = expre.toCharArray();
-    //     int start = 0, end = arr.length - 1;
+    // Quesion 4 - infix to postfix expression
+    public static String reverse(String expre) {
+        char arr[] = expre.toCharArray();
+        int start = 0, end = arr.length - 1;
 
-    //     while(start < end) {
-    //         //swap element
-    //         char temp = arr[start];
-    //         arr[start] = arr[end];
-    //         arr[end] = temp;
+        while(start < end) {
+            //swap element
+            char temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
 
-    //         start++;
-    //         end--;
-    //     }
+            start++;
+            end--;
+        }
 
-    //     return arr.toString();
-    // }
+        return arr.toString();
+    }
 
     public static boolean isDigit(char currChar) {
         if(currChar >= '0' && currChar <= '9') {
@@ -159,7 +159,7 @@ public class _1_5_implementingStackUsingLL {
             if(isDigit(currChar)) {
                 System.out.print(currChar);
             } else {
-                while(!charStack.isEmpty() && getPriority(currChar) <= getPriority(charStack.peek())) {
+                while(!charStack.isEmpty() && getPriority(currChar) < getPriority(charStack.peek())) {
                     System.out.print(charStack.peek());
                     charStack.pop();
                 }
@@ -171,6 +171,11 @@ public class _1_5_implementingStackUsingLL {
             System.out.print(charStack.peek());
             charStack.pop();
         }
+    }
+
+    public static void infixToPrefix(String expre) {
+        Stack<Character> charStack = new Stack<>();
+        System.out.print(reverse(expre));
     }
 
     public static void stackUsingRecursion(LinkedList stk5, int n) {
@@ -234,11 +239,14 @@ public class _1_5_implementingStackUsingLL {
         infixToPostfix(expr);
         System.out.println();
 
+        //Question 7 - infix to prefix
+        String expr2 = "5+6*2-3/2";
+        infixToPrefix(expr2);
+        System.out.println();
+
         //Question 8 - impl of stack using recursion
         LinkedList stk5 = new LinkedList();
         stackUsingRecursion(stk5, 5);
-        stk5.print();
-
-        //Question 9 - 
+        stk5.print(); 
     }
 }
