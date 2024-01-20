@@ -62,7 +62,7 @@ class Queue {
     }
 }
 
-public class _1_7_queueUsingArray {
+class _1_7_queueUsingArray {
     public static void main(String[] args) {
         Queue q = new Queue();
         
