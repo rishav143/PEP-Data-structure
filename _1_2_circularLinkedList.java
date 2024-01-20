@@ -26,7 +26,13 @@ class CircularLinkedList {
         }
     }
 
-    public void 
+    public void insertAtLast(int data) {
+        Node newNode = new Node(data);
+        if(head == null) {
+            head = newNode;
+            head.next = head;
+        }
+    }
 
     public void printList() {
         Node curr = head;

@@ -271,6 +271,6 @@ public class _1_5_implementingStackUsingLL {
         //Question 8 - impl of stack using recursion
         LinkedList stk5 = new LinkedList();
         stackUsingRecursion(stk5, 5);
-        stk5.print(); 
+        stk5.print();
     }
 }
