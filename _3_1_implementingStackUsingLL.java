@@ -81,7 +81,7 @@ class LinkedList {
     }
 }
 
-class _1_5_implementingStackUsingLL {
+class _3_1_implementingStackUsingLL {
     //Question 1 - reverse String
     public static String reverseString(String str, LinkedList stk2) {
         for(int i = 0; i < str.length(); i++) {

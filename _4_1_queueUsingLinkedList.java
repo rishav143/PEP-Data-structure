@@ -66,7 +66,7 @@ class Queue {
     }
 }
 
-class _1_6_queueUsingLinkedList {
+class _4_1_queueUsingLinkedList {
     public static void main(String[] args) {
         Queue q = new Queue();
         //1. enqueue

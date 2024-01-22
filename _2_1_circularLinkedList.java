@@ -44,7 +44,7 @@ class CircularLinkedList {
     }
 }
 
-public class _1_2_circularLinkedList {
+public class _2_1_circularLinkedList {
 
     public static void main(String[] args) {
         CircularLinkedList cl = new CircularLinkedList();
