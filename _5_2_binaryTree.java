@@ -127,9 +127,9 @@ class BinarySearchTree {
     }
   }
 
-  //finding the predecessor of BST
+  // finding the predecessor of BST
   int predecessor() {
-    if(root == null || root.left == null) {
+    if (root == null || root.left == null) {
       return -1;
     }
     return predecessorRec(root.left);
@@ -137,7 +137,7 @@ class BinarySearchTree {
 
   int predecessorRec(Node root) {
     int minV = root.key;
-    while(root.right != null) {
+    while (root.right != null) {
       minV = root.right.key;
       root = root.right;
     }
@@ -150,7 +150,7 @@ class BinarySearchTree {
   }
 
   void decendingOrderRec(Node root) {
-    if(root == null) {
+    if (root == null) {
       return;
     }
 
@@ -192,5 +192,8 @@ class BinarySearchTree {
     //Question - 5-A accending order for bst is inorder traversal
     //Question - 5-B decending order of BST
     tree.decendingOrder();
+
+    //Question - 6 Boundary element of BST
+    //Qestion - 7 Diameter of BST
   }
 }

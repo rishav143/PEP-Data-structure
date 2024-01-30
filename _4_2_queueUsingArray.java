@@ -21,7 +21,7 @@ class Queue {
         return false;
     }
 
-    public void enqueue(int data) {
+    public void enqueue(int v) {
         if(isFull()) {
             System.out.print("Queue is Full!");
         } else {
@@ -29,7 +29,7 @@ class Queue {
                 front = 0;
             }
             rear++;
-            items[rear] = data;
+            items[rear] = v;
         }
     }
 
@@ -60,6 +60,8 @@ class Queue {
             System.out.println();
         }
     }
+
+    
 }
 
 class _1_7_queueUsingArray {
