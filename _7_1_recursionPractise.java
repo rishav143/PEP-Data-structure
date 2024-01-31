@@ -10,6 +10,9 @@ public class _7_1_recursionPractise
     
     //Question 2
     public static boolean isPrime(int n, int i) {
+        if(n <= 2) {
+            return false;
+        }
         if(n%i == 0) {
             return false;
         }
@@ -28,6 +31,27 @@ public class _7_1_recursionPractise
         max = Math.max(max, arr[idx]);
         return findLargest(arr, idx+1, max);
     }
+
+    //Question 4
+    public static int findSmallest(int[] arr, int idx, int min) {
+        //base case
+        if(idx == arr.length - 1) {
+            return Math.min(min, arr[idx]);
+        }
+        min = Math.min(min, arr[idx]);
+        return findSmallest(arr, idx+1, min);
+    }
+
+    //Quesiton 5 
+    public static int reverseNumber(int n, int newNum) {
+        if(n%10 <= 0) {
+            return newNum;
+        }
+        int last = n%10;
+        newNum = newNum * 10 + last;
+        n = n/10;
+        return reverseNumber(n, newNum);
+    }
     
 	public static void main(String[] args) {
 	    
@@ -40,8 +64,15 @@ public class _7_1_recursionPractise
 		System.out.println(isPrime(343, 2));
 		
 		//Question 3 - find largest element in a array
-		int arr[] = {0,9,3,2,6,7,9};
-		int element = findLargest(arr, 1, arr[0]);
-		System.out.println(element);
+		int arr[] = {9,9,3,22,6,7,14}; 
+		int maxElement = findLargest(arr, 1, arr[0]); // it work for the case for more than the one element
+		System.out.println(maxElement);
+
+        //Quesiton 4 - find smallest element in a array
+        int minElement = findSmallest(arr, 1, arr[0]);
+        System.out.println(minElement);
+
+        //Question 5 - reversing a number 
+        System.out.println(reverseNumber(332245, 0));
 	}
 }

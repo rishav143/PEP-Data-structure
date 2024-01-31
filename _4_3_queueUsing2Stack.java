@@ -23,23 +23,16 @@ class Queue {
     public int peek() {
         return stk2.peek();
     }
+}
 
-    public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isEmpty'");
-    }
-
-    public int poll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'poll'");
-    }enqueue(2);
-        q.enqueue(3);
-
-        System.out.print(q.dequeue());
-    }
-
-    public void add(int addVert) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'add'");
+/**
+ * _4_3_queueUsing2Stack
+ */
+public class _4_3_queueUsing2Stack {
+    public static void main(String[] args) {
+        Queue q = new Queue();
+        q.enqueue(1);
+        q.enqueue(2);
+        System.out.println(q.dequeue());
     }
 }
