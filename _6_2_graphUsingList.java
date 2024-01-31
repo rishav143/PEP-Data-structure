@@ -36,6 +36,22 @@ public class _6_2_graphUsingList
         }
     }
     
+    public static void DFSrec(List<List<Integer>> al, boolean[] visited, int s) {
+        visited[s] = true;
+        System.out.print(s + " ");
+        for(int i : al.get(s)) {
+            if(!visited[i]) {
+                visited[i] = true;
+                DFSrec(al, visited, i);
+            }
+        }
+    } 
+    
+    public static void DFS(List<List<Integer>>al, int start) {
+        boolean[] visited = new boolean[al.size()];
+        DFSrec(al, visited, start);
+    }
+    
 	public static void main(String[] args) {
 		List<List<Integer>> adj = new ArrayList<>();
 		int vertices = 4;
@@ -48,6 +64,10 @@ public class _6_2_graphUsingList
 		addEdge(adj, 2,3);
 		
 		printGraph(adj);
+        
         BFS(adj, 0);
+        System.out.println();
+        
+        DFS(adj, 0);
 	}
 }

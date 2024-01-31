@@ -30,6 +30,8 @@ class Graph {
             System.out.println();
         }
     }
+
+    
 }
 
 public class _6_1_graphUsingMatrix
