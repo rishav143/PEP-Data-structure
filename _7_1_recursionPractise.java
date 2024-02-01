@@ -52,6 +52,24 @@ public class _7_1_recursionPractise
         n = n/10;
         return reverseNumber(n, newNum);
     }
+
+    public static int findHCF(int a, int b) {
+        if(a == 0) return b;
+        if(b == 0) return a;
+        if(a == b) return a;
+        
+        if(a > b) {
+            return findHCF(a-b, b);
+        } else {
+            return findHCF(a, b-a);
+        }
+    }
+    
+    public static int findLCM(int a, int b) {
+        //hcf * lcm = product of two numebr
+        int hcf = findHCF(a, b);
+        return (a*b)/hcf;
+    }
     
 	public static void main(String[] args) {
 	    
@@ -74,5 +92,11 @@ public class _7_1_recursionPractise
 
         //Question 5 - reversing a number 
         System.out.println(reverseNumber(332245, 0));
+
+        //Question 6 - HCF of two Number
+	    System.out.println(findHCF(20, 30));
+	    
+	    //Question 7 - lcm of two Number
+	    System.out.print(findLCM(20, 30));
 	}
 }
