@@ -41,7 +41,7 @@ public class _6_2_graphUsingList
         System.out.print(s + " ");
         for(int i : al.get(s)) {
             if(!visited[i]) {
-                visited[i] = true;
+                // visited[i] = true;
                 DFSrec(al, visited, i);
             }
         }

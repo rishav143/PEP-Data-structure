@@ -22,7 +22,7 @@ class circularQueue {
     }
     
     public void enqueue(int data) {
-        if(isFull) {
+        if(isFull()) {
             System.out.println("Queue is Full !");
         }else {
             if(front == -1) {
